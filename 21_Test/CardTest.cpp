@@ -61,3 +61,9 @@ TEST(CardTest, heartsAceCardCreation) {
     ASSERT_NE(card, nullptr);
     delete card;
 }
+
+TEST(CardTest, clubsSixCardGetPoints) {
+    EXPECT_EQ(Card(Card::Suit::Clubs, Card::Rank::Six).getPoints(), 6);
+}
+
+
