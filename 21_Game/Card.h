@@ -14,5 +14,7 @@ private:
 public:
     Card();
     Card(Suit s, Rank r);
+
+    int getPoints() const;
 };
 
