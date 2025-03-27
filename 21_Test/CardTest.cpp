@@ -19,3 +19,9 @@ TEST(CardTest, diamondsSevenCardCreation) {
     ASSERT_NE(card, nullptr);
     delete card;
 }
+
+TEST(CardTest, ñlubsEightCardCreation) {
+    Card* card = new Card(Card::Suit::Clubs, Card::Rank::Eight);
+    ASSERT_NE(card, nullptr);
+    delete card;
+}
