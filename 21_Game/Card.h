@@ -16,5 +16,6 @@ public:
     Card(Suit s, Rank r);
 
     int getPoints() const;
+    void print() const;
 };
 

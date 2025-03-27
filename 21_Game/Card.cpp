@@ -1,4 +1,5 @@
 #include "Card.h"
+#include <iostream>
 
 Card::Card()
 {
@@ -24,4 +25,9 @@ int Card::getPoints() const
     case Rank::Jack: return 2;
     default: return static_cast<int>(rank); //6-10 по номиналу
     }
+}
+
+void Card::print() const
+{
+    std::cout << "10_Бубны ";
 }
