@@ -29,5 +29,7 @@ int Card::getPoints() const
 
 void Card::print() const
 {
-    std::cout << "10_Бубны ";
+    std::string suits[] = { "_Черви", "_Бубны", "_Крести", "_Пики" };
+    std::string ranks[] = { "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
+    std::cout << ranks[static_cast<int>(rank) - 6] << suits[static_cast<int>(suit)] << " ";
 }
