@@ -66,4 +66,17 @@ TEST(CardTest, clubsSixCardGetPoints) {
     EXPECT_EQ(Card(Card::Suit::Clubs, Card::Rank::Six).getPoints(), 6);
 }
 
+TEST(CardTest, anyCardGetPoints) {
+    EXPECT_EQ(Card(Card::Suit::Clubs, Card::Rank::Six).getPoints(), 6);
+    EXPECT_EQ(Card(Card::Suit::Clubs, Card::Rank::Seven).getPoints(), 7);
+    EXPECT_EQ(Card(Card::Suit::Clubs, Card::Rank::Eight).getPoints(), 8);
+    EXPECT_EQ(Card(Card::Suit::Clubs, Card::Rank::Nine).getPoints(), 9);
+    EXPECT_EQ(Card(Card::Suit::Clubs, Card::Rank::Ten).getPoints(), 10);
+    EXPECT_EQ(Card(Card::Suit::Clubs, Card::Rank::Jack).getPoints(), 2);
+    EXPECT_EQ(Card(Card::Suit::Clubs, Card::Rank::Queen).getPoints(), 3);
+    EXPECT_EQ(Card(Card::Suit::Clubs, Card::Rank::King).getPoints(), 4);
+    EXPECT_EQ(Card(Card::Suit::Clubs, Card::Rank::Ace).getPoints(), 11);
+}
+
+
 
