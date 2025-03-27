@@ -78,5 +78,17 @@ TEST(CardTest, anyCardGetPoints) {
     EXPECT_EQ(Card(Card::Suit::Clubs, Card::Rank::Ace).getPoints(), 11);
 }
 
+TEST(CardTest, diamondTenCardPrinting) {
+    Card card(Card::Suit::Diamonds, Card::Rank::Ten);
 
+    //Перехват вывода в консоль
+    ostringstream buffer;
+    streambuf* old = cout.rdbuf(buffer.rdbuf());
+
+    card.print();
+
+    cout.rdbuf(old);
+
+    EXPECT_EQ(buffer.str(), "10_Бубны ");
+}
 
