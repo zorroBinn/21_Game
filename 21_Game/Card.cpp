@@ -16,6 +16,11 @@ Card::Card(Suit s, Rank r)
 
 int Card::getPoints() const
 {
-	//todo реализовать метод с полноценной выдачей очков карты по её достоинству
-	return 6;
+    switch (rank) {
+    case Rank::Ace: return 11;
+    case Rank::King: return 4;
+    case Rank::Queen: return 3;
+    case Rank::Jack: return 2;
+    default: return static_cast<int>(rank); //6-10 по номиналу
+    }
 }
