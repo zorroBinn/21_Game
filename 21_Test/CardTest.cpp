@@ -49,3 +49,9 @@ TEST(CardTest, heartsQueenCardCreation) {
     ASSERT_NE(card, nullptr);
     delete card;
 }
+
+TEST(CardTest, heartsKingCardCreation) {
+    Card* card = new Card(Card::Suit::Hearts, Card::Rank::King);
+    ASSERT_NE(card, nullptr);
+    delete card;
+}
