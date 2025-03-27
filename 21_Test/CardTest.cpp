@@ -37,8 +37,15 @@ TEST(CardTest, heartsTenCardCreation) {
     ASSERT_NE(card, nullptr);
     delete card;
 }
+
 TEST(CardTest, heartsJackCardCreation) {
     Card* card = new Card(Card::Suit::Hearts, Card::Rank::Jack);
+    ASSERT_NE(card, nullptr);
+    delete card;
+}
+
+TEST(CardTest, heartsQueenCardCreation) {
+    Card* card = new Card(Card::Suit::Hearts, Card::Rank::Queen);
     ASSERT_NE(card, nullptr);
     delete card;
 }
