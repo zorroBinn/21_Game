@@ -92,3 +92,23 @@ TEST(CardTest, diamondTenCardPrinting) {
     EXPECT_EQ(buffer.str(), "10_Бубны ");
 }
 
+TEST(CardTest, allCardPrinting) {
+    string suits[] = { "_Черви", "_Бубны", "_Крести", "_Пики" };
+    string ranks[] = { "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
+    for (int s = 0; s < 4; ++s) {  //Масти
+        for (int r = 0; r < 9; ++r) {  //Ранги
+            Card card(static_cast<Card::Suit>(s), static_cast<Card::Rank>(r + 6));
+
+            //Перехват вывода в консоль
+            ostringstream buffer;
+            streambuf* old = cout.rdbuf(buffer.rdbuf());
+
+            card.print();
+
+            cout.rdbuf(old);
+
+            string expectedOutput = ranks[r] + suits[s] + " ";
+            EXPECT_EQ(buffer.str(), expectedOutput) << "Ошибка на карте: " << expectedOutput;
+        }
+    }
+}
