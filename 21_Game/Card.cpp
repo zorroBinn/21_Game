@@ -11,7 +11,8 @@ Card::Card()
 /// <param name="r"> Достоинство </param>
 Card::Card(Suit s, Rank r)
 {
-	//todo реализовать присвоение карте масти и достоинства
+    suit = s;
+    rank = r;
 }
 
 int Card::getPoints() const
