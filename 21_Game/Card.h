@@ -4,8 +4,8 @@
 class Card
 {
 public:
-    enum class Suit { Hearts, Diamonds };
-    enum class Rank { Six = 6, Seven };
+    enum class Suit { Hearts, Diamonds, Clubs };
+    enum class Rank { Six = 6, Seven, Eight };
 
 private:
     Suit suit; //Масть
