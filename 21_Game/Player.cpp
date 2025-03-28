@@ -12,12 +12,18 @@ void Player::takeCard(const Card& card)
 
 int Player::calculatePoints() const
 {
-	//todo реализовать понижение очков для каждого туза в руке, если случился перебор
-	int total = 0;
-	for (const auto& card : hand) {
-		total += card.getPoints();
-	}
-	return total;
+    int total = 0, aceCount = 0;
+    for (const auto& card : hand) {
+        total += card.getPoints();
+        if (card.getPoints() == 11) aceCount++;
+    }
+
+    //Если перебор и есть туз(ы), понижаем их стоимость с 11 до 1
+    while (total > 21 && aceCount > 0) {
+        total -= 10;
+        aceCount--;
+    }
+    return total;
 }
 
 void Player::showHand() const
