@@ -92,3 +92,14 @@ TEST(PlayerTest, playerCalculatePointsOnOneCardOfAllCardsTest) {
     player9.takeCard(card9);
     EXPECT_EQ(player9.calculatePoints(), 6);
 }
+
+TEST(PlayerTest, playerCalculatePointsOfThreeCardsTest) {
+    Player player("Иван");
+    Card card1(Card::Suit::Hearts, Card::Rank::Ace);
+    Card card2(Card::Suit::Hearts, Card::Rank::King);
+    Card card3(Card::Suit::Hearts, Card::Rank::Queen);
+    player.takeCard(card1);
+    player.takeCard(card2);
+    player.takeCard(card3);
+    EXPECT_EQ(player.calculatePoints(), 18);
+}
