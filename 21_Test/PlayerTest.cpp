@@ -116,3 +116,25 @@ TEST(PlayerTest, playerCalculatePointsWithTwoAcesForReductionTest) {
     player.takeCard(card4);
     EXPECT_EQ(player.calculatePoints(), 19);
 }
+
+TEST(PlayerTest, playerShowHandWithFourCardsTest) {
+    Player player("Иван");
+    Card card1(Card::Suit::Hearts, Card::Rank::Ace);
+    Card card2(Card::Suit::Diamonds, Card::Rank::King);
+    Card card3(Card::Suit::Clubs, Card::Rank::Queen);
+    Card card4(Card::Suit::Spades, Card::Rank::Jack);
+    player.takeCard(card1);
+    player.takeCard(card2);
+    player.takeCard(card3);
+    player.takeCard(card4);
+    //Перехват вывода в консоль
+    ostringstream buffer;
+    streambuf* old = cout.rdbuf(buffer.rdbuf());
+
+    player.showHand();
+
+    cout.rdbuf(old);
+
+    string expectedOutput = "Карты игрока Иван: A_Черви K_Бубны Q_Крести J_Пики (20)\n";
+    EXPECT_EQ(buffer.str(), expectedOutput) << "Вывод showHand() не соответствует ожидаемому!";
+}
