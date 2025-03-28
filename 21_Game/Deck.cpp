@@ -1,4 +1,5 @@
 #include "Deck.h"
+#include <stdexcept>
 
 Deck::Deck()
 {
@@ -17,6 +18,8 @@ int Deck::getSize() const
 
 Card Deck::dealCard()
 {
-	//todo реализовать исключение, если требуют возврат карты >36 
-	return cards[currentCardIndex++];
+	if (getSize() > 0) {
+		return cards[currentCardIndex++];
+	}
+	throw std::out_of_range("Карта не может быть роздана — колода пуста!");
 }
