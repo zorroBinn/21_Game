@@ -1,5 +1,7 @@
 #include "Deck.h"
 #include <stdexcept>
+#include <algorithm>
+#include <random>
 
 Deck::Deck()
 {
@@ -13,8 +15,10 @@ Deck::Deck()
 
 void Deck::shuffle()
 {
-	//todo реализовать рандомное перемешивание карт во всей колоде
-	std::swap(cards[0], cards[1]);
+	std::random_device rd;
+	std::mt19937 g(rd());
+	std::shuffle(cards.begin(), cards.end(), g);
+	currentCardIndex = 0;
 }
 
 int Deck::getSize() const
