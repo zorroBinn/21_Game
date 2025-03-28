@@ -11,6 +11,12 @@ Deck::Deck()
 	}
 }
 
+void Deck::shuffle()
+{
+	//todo реализовать рандомное перемешивание карт во всей колоде
+	std::swap(cards[0], cards[1]);
+}
+
 int Deck::getSize() const
 {
 	return cards.size() - currentCardIndex;

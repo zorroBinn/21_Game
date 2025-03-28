@@ -10,6 +10,7 @@ private:
 public:
 	Deck();
 
+	void shuffle();
 	int getSize() const;
 	Card dealCard();
 };
