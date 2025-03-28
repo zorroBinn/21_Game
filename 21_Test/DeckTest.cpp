@@ -77,3 +77,29 @@ TEST(DeckTest, deckShuffleSimpleTest) {
     }
     EXPECT_TRUE(isDifferent) << "Перемешанная колода совпадает с оригинальной!";
 }
+
+TEST(DeckTest, deckFullShuffleTest) {
+    const int numDecks = 3;
+    vector<vector<Card>> shuffledDecks;
+    for (int i = 0; i < numDecks; i++) {
+        Deck deck;
+        deck.shuffle();
+        vector<Card> cards;
+        for (int j = 0; j < 36; j++) {
+            cards.push_back(deck.dealCard());
+        }
+
+        shuffledDecks.push_back(cards);
+    }
+    bool isDifferent = false;
+    for (int i = 0; i < numDecks - 1; ++i) {
+        for (int j = 0; j < 5; ++j) {
+            if (shuffledDecks[i][j].getPoints() != shuffledDecks[i + 1][j].getPoints()) {
+                isDifferent = true;
+                break;
+            }
+        }
+        if (isDifferent) break;
+    }
+    EXPECT_TRUE(isDifferent) << "Shuffle не ведёт к разным результатам!";
+}
