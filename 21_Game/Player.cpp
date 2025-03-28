@@ -10,6 +10,11 @@ void Player::takeCard(const Card& card)
 	//todo реализовать запоминание карты в руке
 }
 
+int Player::calculatePoints() const
+{
+	return 11;
+}
+
 void Player::showHand() const
 {
 	//todo реализовать полноценный вывод карт игрока с подсчётом очков

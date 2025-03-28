@@ -11,6 +11,7 @@ public:
 	Player(std::string playerName);
 
 	void takeCard(const Card& card);
+	int calculatePoints() const;
 	void showHand() const;
 	std::string getName() const;
 };
