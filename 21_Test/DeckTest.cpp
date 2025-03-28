@@ -27,3 +27,26 @@ TEST(DeckTest, deckDealCardTest) {
 
     EXPECT_FALSE(buffer.str().empty()) << "Карта не вывелась";
 }
+
+TEST(DeckTest, dealUniqueCardsFromDeckTest) {
+    Deck deck;
+    set<string> uniqueCards;
+
+    for (int i = 0; i < 36; ++i) {
+        Card card = deck.dealCard();
+
+        //Перехват вывода в консоль
+        ostringstream buffer;
+        streambuf* old = cout.rdbuf(buffer.rdbuf());
+
+        card.print();
+
+        cout.rdbuf(old);
+        string cardStr = buffer.str();
+        EXPECT_TRUE(uniqueCards.find(cardStr) == uniqueCards.end()) << "Повтор карты: " << cardStr; //Проверяем, что карта уникальна
+        uniqueCards.insert(cardStr);
+    }
+
+    //Проверяем, что уникальных карт 36
+    EXPECT_EQ(uniqueCards.size(), 36) << "Должно быть ровно 36 уникальных карт!";
+}
