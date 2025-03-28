@@ -46,3 +46,10 @@ TEST(PlayerTest, playerShowHandWithOneCardTest) {
     string expectedOutput = "Карты игрока Иван: A_Черви (11)\n";
     EXPECT_EQ(buffer.str(), expectedOutput) << "Вывод showHand() не соответствует ожидаемому!";
 }
+
+TEST(PlayerTest, playerCalculatePointsOfOneCardTest) {
+    Player player("Иван");
+    Card card1(Card::Suit::Hearts, Card::Rank::Ace);
+    player.takeCard(card1);
+    EXPECT_EQ(player.calculatePoints(), 11);
+}
