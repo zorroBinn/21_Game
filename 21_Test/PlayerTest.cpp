@@ -7,3 +7,10 @@ TEST(PlayerTest, playerSimpleCreation) {
     ASSERT_NE(player, nullptr);
     delete player;
 }
+
+TEST(PlayerTest, playerGetNameTest) {
+    string name = "Иван";
+    Player* player = new Player(name);
+    EXPECT_EQ(player->getName(), name);
+    delete player;
+}
