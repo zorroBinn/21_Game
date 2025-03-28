@@ -2,6 +2,12 @@
 
 Deck::Deck()
 {
+	//todo реализовать перемешивание карт
+	for (int s = 0; s < 4; s++) { // Перебираем все масти
+		for (int r = 6; r <= 14; r++) { // От 6 до туза (Ace = 14)
+			cards.emplace_back(static_cast<Card::Suit>(s), static_cast<Card::Rank>(r));
+		}
+	}
 }
 
 int Deck::getSize() const
@@ -12,6 +18,6 @@ int Deck::getSize() const
 
 Card Deck::dealCard()
 {
-	//todo реализовать полноценный возврат карты из конца колоды
-	return Card(Card::Suit::Spades, Card::Rank::Ace);
+	//todo реализовать исключение, если требуют возврат карты >36 
+	return cards[currentCardIndex++];
 }
