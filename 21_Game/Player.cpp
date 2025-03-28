@@ -7,12 +7,13 @@ Player::Player(std::string playerName)
 
 void Player::takeCard(const Card& card)
 {
-	//todo реализовать запоминание карты в руке
+	hand.push_back(card);
 }
 
 int Player::calculatePoints() const
 {
-	return 11;
+	//todo реализовать полноценный подсчет очков всех карт в руке
+	return hand.back().getPoints();
 }
 
 void Player::showHand() const

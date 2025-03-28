@@ -1,11 +1,13 @@
 #pragma once
 #include <iostream>
+#include <vector>
 #include "Card.h"
 
 class Player
 {
 private:
 	std::string name;
+	std::vector<Card> hand;
 
 public:
 	Player(std::string playerName);
