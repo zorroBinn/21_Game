@@ -12,3 +12,18 @@ TEST(DeckTest, deckGetSizeTest) {
     Deck deck;
     EXPECT_EQ(deck.getSize(), 36);
 }
+
+TEST(DeckTest, deckDealCardTest) {
+    Deck deck;
+    Card card = deck.dealCard();
+
+    //Перехватываем вывод в консоль
+    ostringstream buffer;
+    streambuf* old = cout.rdbuf(buffer.rdbuf());
+
+    card.print();
+
+    cout.rdbuf(old);
+
+    EXPECT_FALSE(buffer.str().empty()) << "Карта не вывелась";
+}
