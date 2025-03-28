@@ -3,6 +3,9 @@
 
 class Player
 {
+private:
+	std::string name;
+
 public:
 	Player(std::string playerName);
 

@@ -2,10 +2,10 @@
 
 Player::Player(std::string playerName)
 {
+	name = playerName;
 }
 
 std::string Player::getName() const
 {
-	//todo реализовать полноценный возврат имениы
-	return "Иван";
+	return name;
 }
