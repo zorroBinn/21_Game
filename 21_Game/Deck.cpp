@@ -12,8 +12,7 @@ Deck::Deck()
 
 int Deck::getSize() const
 {
-	//todo реализовать полноценный возврат текущего кол-ва карт в колоде
-	return 36;
+	return cards.size() - currentCardIndex;
 }
 
 Card Deck::dealCard()
