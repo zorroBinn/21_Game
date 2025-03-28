@@ -12,8 +12,12 @@ void Player::takeCard(const Card& card)
 
 int Player::calculatePoints() const
 {
-	//todo реализовать полноценный подсчет очков всех карт в руке
-	return hand.back().getPoints();
+	//todo реализовать понижение очков для каждого туза в руке, если случился перебор
+	int total = 0;
+	for (const auto& card : hand) {
+		total += card.getPoints();
+	}
+	return total;
 }
 
 void Player::showHand() const
