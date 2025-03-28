@@ -53,3 +53,42 @@ TEST(PlayerTest, playerCalculatePointsOfOneCardTest) {
     player.takeCard(card1);
     EXPECT_EQ(player.calculatePoints(), 11);
 }
+
+TEST(PlayerTest, playerCalculatePointsOnOneCardOfAllCardsTest) {
+    Player player1("name1");
+    Player player2("name2");
+    Player player3("name3");
+    Player player4("name4");
+    Player player5("name5");
+    Player player6("name6");
+    Player player7("name7");
+    Player player8("name8");
+    Player player9("name9");
+    Card card1(Card::Suit::Hearts, Card::Rank::Ace);
+    Card card2(Card::Suit::Hearts, Card::Rank::King);
+    Card card3(Card::Suit::Hearts, Card::Rank::Queen);
+    Card card4(Card::Suit::Hearts, Card::Rank::Jack);
+    Card card5(Card::Suit::Hearts, Card::Rank::Ten);
+    Card card6(Card::Suit::Hearts, Card::Rank::Nine);
+    Card card7(Card::Suit::Hearts, Card::Rank::Eight);
+    Card card8(Card::Suit::Hearts, Card::Rank::Seven);
+    Card card9(Card::Suit::Hearts, Card::Rank::Six);
+    player1.takeCard(card1);
+    EXPECT_EQ(player1.calculatePoints(), 11);
+    player2.takeCard(card2);
+    EXPECT_EQ(player2.calculatePoints(), 4);
+    player3.takeCard(card3);
+    EXPECT_EQ(player3.calculatePoints(), 3);
+    player4.takeCard(card4);
+    EXPECT_EQ(player4.calculatePoints(), 2);
+    player5.takeCard(card5);
+    EXPECT_EQ(player5.calculatePoints(), 10);
+    player6.takeCard(card6);
+    EXPECT_EQ(player6.calculatePoints(), 9);
+    player7.takeCard(card7);
+    EXPECT_EQ(player7.calculatePoints(), 8);
+    player8.takeCard(card8);
+    EXPECT_EQ(player8.calculatePoints(), 7);
+    player9.takeCard(card9);
+    EXPECT_EQ(player9.calculatePoints(), 6);
+}
