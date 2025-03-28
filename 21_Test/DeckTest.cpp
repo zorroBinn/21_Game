@@ -50,3 +50,9 @@ TEST(DeckTest, dealUniqueCardsFromDeckTest) {
     //Проверяем, что уникальных карт 36
     EXPECT_EQ(uniqueCards.size(), 36) << "Должно быть ровно 36 уникальных карт!";
 }
+
+TEST(DeckTest, deckGetSizeAfterDealTest) {
+    Deck deck;
+    deck.dealCard();
+    EXPECT_EQ(deck.getSize(), 35);
+}
