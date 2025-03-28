@@ -56,3 +56,11 @@ TEST(DeckTest, deckGetSizeAfterDealTest) {
     deck.dealCard();
     EXPECT_EQ(deck.getSize(), 35);
 }
+
+TEST(DeckTest, dealExceptionAfterOutOfCardTest) {
+    Deck deck;
+    for (int i = 0; i < 36; i++) {
+        deck.dealCard();
+    }
+    EXPECT_THROW(deck.dealCard(), out_of_range);
+}
