@@ -25,5 +25,24 @@ TEST(PlayerTest, playerGetUniqueNameTest) {
     EXPECT_EQ(player1->getName(), name1) << "Первое имя не совпало";
     EXPECT_EQ(player2->getName(), name2) << "Второе имя не совпало";
     EXPECT_EQ(player3->getName(), name3) << "Третье имя не совпало";
-    delete player1, player2, player3;
+    delete player1; 
+    delete player2;
+    delete player3;
+}
+
+TEST(PlayerTest, playerShowHandWithOneCardTest) {
+    Player player("Иван");
+    Card card1(Card::Suit::Hearts, Card::Rank::Ace);
+    player.takeCard(card1);
+
+    //Перехват вывода в консоль
+    ostringstream buffer;
+    streambuf* old = cout.rdbuf(buffer.rdbuf());
+
+    player.showHand();
+
+    cout.rdbuf(old);
+
+    string expectedOutput = "Карты игрока Иван: A_Черви (11)\n";
+    EXPECT_EQ(buffer.str(), expectedOutput) << "Вывод showHand() не соответствует ожидаемому!";
 }
