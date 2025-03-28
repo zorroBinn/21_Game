@@ -7,3 +7,8 @@ TEST(DeckTest, deckSimpleCreation) {
     ASSERT_NE(deck, nullptr);
     delete deck;
 }
+
+TEST(DeckTest, deckGetSizeTest) {
+    Deck deck;
+    EXPECT_EQ(deck.getSize(), 36);
+}
