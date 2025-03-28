@@ -64,3 +64,16 @@ TEST(DeckTest, dealExceptionAfterOutOfCardTest) {
     }
     EXPECT_THROW(deck.dealCard(), out_of_range);
 }
+
+TEST(DeckTest, deckShuffleSimpleTest) {
+    Deck deck1, deck2;
+    deck1.shuffle();
+    bool isDifferent = false;
+    for (int i = 0; i < 36; i++) {
+        if (deck1.dealCard().getPoints() != deck2.dealCard().getPoints()) {
+            isDifferent = true;
+            break;
+        }
+    }
+    EXPECT_TRUE(isDifferent) << "ѕеремешанна€ колода совпадает с оригинальной!";
+}
