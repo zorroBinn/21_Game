@@ -103,3 +103,15 @@ TEST(DeckTest, deckFullShuffleTest) {
     }
     EXPECT_TRUE(isDifferent) << "Shuffle не ведёт к разным результатам!";
 }
+
+TEST(DeckTest, deckShuffledWhenCreatedTest) {
+    Deck deck1, deck2;
+    bool isDifferent = false;
+    for (int i = 0; i < 36; i++) {
+        if (deck1.dealCard().getPoints() != deck2.dealCard().getPoints()) {
+            isDifferent = true;
+            break;
+        }
+    }
+    EXPECT_TRUE(isDifferent) << "Перемешанная колода совпадает с оригинальной!";
+}
