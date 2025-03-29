@@ -115,3 +115,30 @@ TEST(GameTest, determineWinnerTwoPlayerSimpleTest) {
     string expectedOutput = "Победитель(и): name1 с 21 очками!\n";
     EXPECT_EQ(buffer.str(), expectedOutput);
 }
+
+TEST(GameTest, determineWinnerThreePlayerTest) {
+    Game game;
+    Player pl1("name1");
+    Player pl2("name2");
+    Player pl3("name3");
+    pl1.takeCard(Card(Card::Suit::Hearts, Card::Rank::Ace));
+    pl1.takeCard(Card(Card::Suit::Hearts, Card::Rank::Eight));
+    pl2.takeCard(Card(Card::Suit::Spades, Card::Rank::Ten));
+    pl2.takeCard(Card(Card::Suit::Spades, Card::Rank::Seven));
+    pl3.takeCard(Card(Card::Suit::Clubs, Card::Rank::Ten));
+    pl3.takeCard(Card(Card::Suit::Diamonds, Card::Rank::Ten));
+    game.addPlayer(pl1);
+    game.addPlayer(pl2);
+    game.addPlayer(pl3);
+
+    //Перехват вывода в консоль
+    ostringstream buffer;
+    streambuf* old = cout.rdbuf(buffer.rdbuf());
+
+    game.determineWinner();
+
+    cout.rdbuf(old);
+
+    string expectedOutput = "Победитель(и): name3 с 20 очками!\n";
+    EXPECT_EQ(buffer.str(), expectedOutput);
+}
