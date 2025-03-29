@@ -7,3 +7,12 @@ TEST(GameTest, gameSimpleCreation) {
     ASSERT_NE(game, nullptr);
     delete game;
 }
+
+TEST(GameTest, gameAddAndGetPlayers) {
+    Game game;
+
+    game.addPlayer(Player("Alice"));
+    game.addPlayer(Player("Bob"));
+
+    EXPECT_EQ(game.getPlayers().size(), 2) << "Не 2 игрока";
+}
