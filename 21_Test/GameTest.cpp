@@ -92,3 +92,26 @@ TEST(GameTest, setupGameInitialCardsTest) {
 
     cin.rdbuf(nullptr);
 }
+
+TEST(GameTest, determineWinnerTwoPlayerSimpleTest) {
+    Game game;
+    Player pl1("name1");
+    Player pl2("name2");
+    pl1.takeCard(Card(Card::Suit::Hearts, Card::Rank::Ace));
+    pl1.takeCard(Card(Card::Suit::Hearts, Card::Rank::Ten));
+    pl2.takeCard(Card(Card::Suit::Spades, Card::Rank::Ten));
+    pl2.takeCard(Card(Card::Suit::Spades, Card::Rank::Seven));
+    game.addPlayer(pl1);
+    game.addPlayer(pl2);
+
+    //Перехват вывода в консоль
+    ostringstream buffer;
+    streambuf* old = cout.rdbuf(buffer.rdbuf());
+
+    game.determineWinner();
+
+    cout.rdbuf(old);
+
+    string expectedOutput = "Победитель(и): name1 с 21 очками!\n";
+    EXPECT_EQ(buffer.str(), expectedOutput);
+}
