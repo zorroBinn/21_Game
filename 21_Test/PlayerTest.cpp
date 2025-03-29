@@ -138,3 +138,13 @@ TEST(PlayerTest, playerShowHandWithFourCardsTest) {
     string expectedOutput = "Карты игрока Иван: A_Черви K_Бубны Q_Крести J_Пики (20)\n";
     EXPECT_EQ(buffer.str(), expectedOutput) << "Вывод showHand() не соответствует ожидаемому!";
 }
+
+TEST(PlayerTest, playerGetHandWithOneAceTest) {
+    Player player("Иван");
+    Card card1(Card::Suit::Hearts, Card::Rank::Ace);
+    player.takeCard(card1);
+
+    const auto& hand = player.getHand();
+
+    EXPECT_EQ(hand[0].getPoints(), 11);
+}
