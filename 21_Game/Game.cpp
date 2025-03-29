@@ -20,6 +20,12 @@ void Game::setupGame()
 		Player player(name);
 		players.push_back(player);
 	}
+
+	//Раздаём стартовые 2 карты каждому игроку
+	for (auto& player : players) {
+		player.takeCard(deck.dealCard());
+		player.takeCard(deck.dealCard());
+	}
 }
 
 void Game::addPlayer(Player p)

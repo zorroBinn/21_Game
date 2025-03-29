@@ -1,11 +1,13 @@
 #pragma once
 #include "Player.h"
 #include <vector>
+#include "Deck.h"
 
 class Game
 {
 private:
 	std::vector<Player> players;
+	Deck deck;
 
 public:
 	Game();
