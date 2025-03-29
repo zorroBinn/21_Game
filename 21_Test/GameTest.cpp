@@ -197,3 +197,15 @@ TEST(GameTest, determineWinnerFourPlayerFirstAndThirdWonTest) {
     string expectedOutput = "Победитель(и): name1 name3 с 19 очками!\n";
     EXPECT_EQ(buffer.str(), expectedOutput);
 }
+
+TEST(GameTest, determineWinnerCalledAfterPlayTest) {
+    istringstream input("2\nname1\nname2\n");
+    cin.rdbuf(input.rdbuf());
+
+    Game game;
+    game.setupGame();
+
+    EXPECT_NO_THROW(game.play());
+    EXPECT_NO_THROW(game.determineWinner());
+    cin.rdbuf(nullptr);
+}
