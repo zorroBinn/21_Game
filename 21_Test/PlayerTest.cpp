@@ -148,3 +148,22 @@ TEST(PlayerTest, playerGetHandWithOneAceTest) {
 
     EXPECT_EQ(hand[0].getPoints(), 11);
 }
+
+TEST(PlayerTest, playerGetHandWithFourCardTest) {
+    Player player("Иван");
+    Card card1(Card::Suit::Hearts, Card::Rank::Ace);
+    Card card2(Card::Suit::Diamonds, Card::Rank::King);
+    Card card3(Card::Suit::Clubs, Card::Rank::Queen);
+    Card card4(Card::Suit::Spades, Card::Rank::Jack);
+    player.takeCard(card1);
+    player.takeCard(card2);
+    player.takeCard(card3);
+    player.takeCard(card4);
+
+    const auto& hand = player.getHand();
+
+    EXPECT_EQ(hand[0].getPoints(), 11);
+    EXPECT_EQ(hand[1].getPoints(), 4);
+    EXPECT_EQ(hand[2].getPoints(), 3);
+    EXPECT_EQ(hand[3].getPoints(), 2);
+}
