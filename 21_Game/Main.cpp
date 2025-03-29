@@ -7,7 +7,7 @@ int main() {
 	Game game;
 	game.setupGame();
 	game.play();
-	system("cls");
+	std::cout << std::endl << std::endl;
 	game.determineWinner();
 	return 0;
 }
