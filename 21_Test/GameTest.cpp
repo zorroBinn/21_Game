@@ -46,3 +46,20 @@ TEST(GameTest, gameSetupGameWithTwoPlayerCheckPlayersTest) {
 
     cin.rdbuf(nullptr);
 }
+
+TEST(GameTest, gameSetupGameWithThreePlayerCheckPlayersTest) {
+    //Подмена ввода
+    istringstream input("3\nname1\nname2\nname3\n");
+    cin.rdbuf(input.rdbuf());
+
+    Game game;
+    game.setupGame();
+
+    const auto& players = game.getPlayers();
+    EXPECT_EQ(players.size(), 3) << "setupGame должен создать 3 игрока";
+    EXPECT_EQ(players[0].getName(), "name1");
+    EXPECT_EQ(players[1].getName(), "name2");
+    EXPECT_EQ(players[2].getName(), "name3");
+
+    cin.rdbuf(nullptr);
+}
