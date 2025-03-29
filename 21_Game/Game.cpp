@@ -8,13 +8,12 @@ void Game::setupGame()
 {
 	int numPlayers;
 	std::cin >> numPlayers;
-	std::string name1, name2;
-	std::cin >> name1;
-	std::cin >> name2;
-	Player player1(name1);
-	Player player2(name2);
-	players.push_back(player1);
-	players.push_back(player2);
+	for (int i = 1; i <= numPlayers; i++) {
+		std::string name;
+		std::cin >> name;
+		Player player(name);
+		players.push_back(player);
+	}
 }
 
 void Game::addPlayer(Player p)
