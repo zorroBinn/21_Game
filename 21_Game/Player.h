@@ -16,5 +16,6 @@ public:
 	int calculatePoints() const;
 	void showHand() const;
 	std::string getName() const;
+	std::vector<Card> getHand() const;
 };
 
