@@ -30,3 +30,19 @@ TEST(GameTest, gameAddAndGetThreePlayersTest) {
     EXPECT_EQ(players[1].getName(), "name2") << "Имя второго игрока не совпало";
     EXPECT_EQ(players[2].getName(), "name3") << "Имя третьего игрока не совпало";
 }
+
+TEST(GameTest, gameSetupGameWithTwoPlayerCheckPlayersTest) {
+    //Подмена ввода
+    istringstream input("2\nname1\nname2\n");
+    cin.rdbuf(input.rdbuf());
+
+    Game game;
+    game.setupGame();
+
+    const auto& players = game.getPlayers();
+    EXPECT_EQ(players.size(), 2) << "setupGame должен создать 2 игрока";
+    EXPECT_EQ(players[0].getName(), "name1");
+    EXPECT_EQ(players[1].getName(), "name2");
+
+    cin.rdbuf(nullptr);
+}
