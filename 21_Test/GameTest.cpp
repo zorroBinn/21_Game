@@ -209,3 +209,21 @@ TEST(GameTest, determineWinnerCalledAfterPlayTest) {
     EXPECT_NO_THROW(game.determineWinner());
     cin.rdbuf(nullptr);
 }
+
+TEST(GameTest, playCanShowCardActivePlayerTest) {
+    Game game;
+    Player pl1("name1");
+    pl1.takeCard(Card(Card::Suit::Hearts, Card::Rank::Ace));
+    pl1.takeCard(Card(Card::Suit::Hearts, Card::Rank::Eight));
+    game.addPlayer(pl1);
+    //Перехват вывода в консоль
+    ostringstream buffer;
+    streambuf* old = cout.rdbuf(buffer.rdbuf());
+
+    game.play();
+
+    cout.rdbuf(old);
+
+    string expectedOutput = "Карты игрока name1: A_Черви 8_Черви (19)\n";
+    EXPECT_EQ(buffer.str(), expectedOutput);
+}
