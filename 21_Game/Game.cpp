@@ -34,17 +34,23 @@ void Game::determineWinner()
 	std::vector<Player*> winners;
 	for (auto& player : players) {
 		int score = player.calculatePoints();
+		if (score > 21) continue;  //Если перебрал - исключается
 		if (score > bestScore) {
 			bestScore = score;
 			winners.clear();
 			winners.push_back(&player);
 		}
 	}
-	std::cout << "Победитель(и): ";
-	for (auto* winner : winners) {
-		std::cout << winner->getName() << " ";
+	if (winners.empty()) {
+		std::cout << "Никто не выиграл!" << std::endl;
 	}
-	std::cout << "с " << bestScore << " очками!" << std::endl;
+	else {
+		std::cout << "Победитель(и): ";
+		for (auto* winner : winners) {
+			std::cout << winner->getName() << " ";
+		}
+		std::cout << "с " << bestScore << " очками!" << std::endl;
+	}
 }
 
 void Game::addPlayer(Player p)
