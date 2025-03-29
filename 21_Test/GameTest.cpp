@@ -252,3 +252,28 @@ TEST(GameTest, playersCanTakeCardAndPassTest) {
     EXPECT_EQ(after2 - before2, 2);
     cin.rdbuf(nullptr);
 }
+
+TEST(GameTest, playerNotificationÀfterOverkillTest) {
+    Game game;
+    Player player("name1");
+    player.takeCard(Card(Card::Suit::Hearts, Card::Rank::Ten));
+    player.takeCard(Card(Card::Suit::Diamonds, Card::Rank::Ten));
+    player.takeCard(Card(Card::Suit::Clubs, Card::Rank::Ace));
+    game.addPlayer(player);
+
+    const auto& playersBefore = game.getPlayers();
+    int before = playersBefore[0].getHand().size();
+
+    istringstream input("+\n");
+    cin.rdbuf(input.rdbuf());
+
+    //Ïåğåõâàò âûâîäà â êîíñîëü
+    ostringstream buffer;
+    streambuf* old = cout.rdbuf(buffer.rdbuf());
+    
+    game.play();
+
+    cin.rdbuf(nullptr);
+    cout.rdbuf(old);
+    EXPECT_NE(buffer.str().find("name1 ïåğåáğàë!"), string::npos);
+}
