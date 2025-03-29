@@ -40,6 +40,9 @@ void Game::determineWinner()
 			winners.clear();
 			winners.push_back(&player);
 		}
+		else if (score == bestScore) {
+			winners.push_back(&player);
+		}
 	}
 	if (winners.empty()) {
 		std::cout << "Никто не выиграл!" << std::endl;
