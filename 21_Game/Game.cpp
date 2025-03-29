@@ -28,6 +28,10 @@ void Game::setupGame()
 	}
 }
 
+void Game::play()
+{
+}
+
 void Game::determineWinner()
 {
 	int bestScore = 0;
