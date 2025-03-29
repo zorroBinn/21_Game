@@ -42,6 +42,5 @@ std::string Player::getName() const
 
 std::vector<Card> Player::getHand() const
 {
-    std::vector<Card> h = { Card(Card::Suit::Hearts, Card::Rank::Ace) };
-    return h;
+    return hand;
 }
