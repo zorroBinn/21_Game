@@ -227,3 +227,28 @@ TEST(GameTest, playCanShowCardActivePlayerTest) {
     string expectedOutput = "Карты игрока name1: A_Черви 8_Черви (19)\n";
     EXPECT_EQ(buffer.str(), expectedOutput);
 }
+
+TEST(GameTest, playersCanTakeCardAndPassTest) {
+    istringstream input("2\nname1\nname2\n");
+    cin.rdbuf(input.rdbuf());
+
+    Game game;
+    game.setupGame();
+    cin.rdbuf(nullptr);
+
+    const auto& playersBefore = game.getPlayers();
+    int before1 = playersBefore[0].getHand().size();
+    int before2 = playersBefore[1].getHand().size();
+    
+    istringstream inputPlay("+\nn\n+\n+\nn\n");
+    cin.rdbuf(inputPlay.rdbuf());
+
+    game.play();
+
+    const auto& playersAfter = game.getPlayers();
+    int after1 = playersAfter[0].getHand().size();
+    int after2 = playersAfter[1].getHand().size();
+    EXPECT_EQ(after1 - before1, 1);
+    EXPECT_EQ(after2 - before2, 2);
+    cin.rdbuf(nullptr);
+}
