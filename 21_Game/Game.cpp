@@ -28,6 +28,11 @@ void Game::setupGame()
 	}
 }
 
+void Game::determineWinner()
+{
+	std::cout << "Победитель(и): name1 с 21 очками!" << std::endl;
+}
+
 void Game::addPlayer(Player p)
 {
 	players.push_back(p);
