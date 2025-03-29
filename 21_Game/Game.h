@@ -4,6 +4,9 @@
 
 class Game
 {
+private:
+	std::vector<Player> players;
+
 public:
 	Game();
 
