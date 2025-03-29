@@ -1,6 +1,10 @@
 #pragma once
 #include "Card.h"
 #include <vector>
+#include <stdexcept>
+#include <algorithm>
+#include <random>
+
 class Deck
 {
 private:

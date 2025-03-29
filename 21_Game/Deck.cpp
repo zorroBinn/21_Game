@@ -1,7 +1,5 @@
 #include "Deck.h"
-#include <stdexcept>
-#include <algorithm>
-#include <random>
+using namespace std;
 
 Deck::Deck()
 {
@@ -15,8 +13,8 @@ Deck::Deck()
 
 void Deck::shuffle()
 {
-	std::random_device rd;
-	std::mt19937 g(rd());
+	random_device rd;
+	mt19937 g(rd());
 	std::shuffle(cards.begin(), cards.end(), g);
 	currentCardIndex = 0;
 }
@@ -31,5 +29,5 @@ Card Deck::dealCard()
 	if (getSize() > 0) {
 		return cards[currentCardIndex++];
 	}
-	throw std::out_of_range("Карта не может быть роздана — колода пуста!");
+	throw out_of_range("Карта не может быть роздана — колода пуста!");
 }

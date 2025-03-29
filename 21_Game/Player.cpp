@@ -1,6 +1,7 @@
 #include "Player.h"
+using namespace std;
 
-Player::Player(std::string playerName)
+Player::Player(string playerName)
 {
 	name = playerName;
 }
@@ -28,19 +29,19 @@ int Player::calculatePoints() const
 
 void Player::showHand() const
 {
-    std::cout << "Карты игрока " << name << ": ";
+    cout << "Карты игрока " << name << ": ";
     for (const auto& card : hand) {
         card.print();
     }
-    std::cout << "(" << calculatePoints() << ")" << std::endl;
+    cout << "(" << calculatePoints() << ")" << endl;
 }
 
-std::string Player::getName() const
+string Player::getName() const
 {
 	return name;
 }
 
-std::vector<Card> Player::getHand() const
+vector<Card> Player::getHand() const
 {
     return hand;
 }

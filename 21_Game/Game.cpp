@@ -1,4 +1,5 @@
 #include "Game.h"
+using namespace std;
 
 Game::Game()
 {
@@ -7,16 +8,17 @@ Game::Game()
 void Game::setupGame()
 {
 	int numPlayers;
-	std::cout << "Введите количество игроков (2-4): ";
-	std::cin >> numPlayers;
+	cout << "Введите количество игроков (2-4): ";
+	cin >> numPlayers;
 
 	while (numPlayers < 2 || numPlayers > 4) {
-		std::cout << "Ошибка! Введите число от 2 до 4: ";
-		std::cin >> numPlayers;
+		cout << "Ошибка! Введите число от 2 до 4: ";
+		cin >> numPlayers;
 	}
 	for (int i = 1; i <= numPlayers; i++) {
-		std::string name;
-		std::cin >> name;
+		string name;
+		cout << "Введите имя игрока " << i << ": ";
+		cin >> name;
 		Player player(name);
 		players.push_back(player);
 	}
@@ -30,19 +32,18 @@ void Game::setupGame()
 
 void Game::play()
 {
-	//todo в конце определять победителя(-ей)
+	system("cls");
 	for (auto& player : players) {
-		system("cls");
 		while (true) {
 			player.showHand();
-			std::cout << player.getName() << ", хотите взять карту? (\"+\"/\"n\"): ";
+			cout << player.getName() << ", хотите взять карту? (\"+\"/\"n\"): ";
 			char choice;
-			std::cin >> choice;
+			cin >> choice;
 
 			if (choice == '+') {
 				player.takeCard(deck.dealCard());
 				if (player.calculatePoints() > 21) {
-					std::cout << player.getName() << " перебрал!" << std::endl;
+					cout << player.getName() << " перебрал!" << endl;
 					break;
 				}
 			}
@@ -56,7 +57,7 @@ void Game::play()
 void Game::determineWinner()
 {
 	int bestScore = 0;
-	std::vector<Player*> winners;
+	vector<Player*> winners;
 	for (auto& player : players) {
 		int score = player.calculatePoints();
 		if (score > 21) continue;  //Если перебрал - исключается
@@ -70,14 +71,14 @@ void Game::determineWinner()
 		}
 	}
 	if (winners.empty()) {
-		std::cout << "Никто не выиграл!" << std::endl;
+		cout << "Никто не выиграл!" << endl;
 	}
 	else {
-		std::cout << "Победитель(и): ";
+		cout << "Победитель(и): ";
 		for (auto* winner : winners) {
-			std::cout << winner->getName() << " ";
+			cout << winner->getName() << " ";
 		}
-		std::cout << "с " << bestScore << " очками!" << std::endl;
+		cout << "с " << bestScore << " очками!" << endl;
 	}
 }
 
@@ -86,7 +87,7 @@ void Game::addPlayer(Player p)
 	players.push_back(p);
 }
 
-std::vector<Player> Game::getPlayers() const
+vector<Player> Game::getPlayers() const
 {
 	return players;
 }
