@@ -30,7 +30,21 @@ void Game::setupGame()
 
 void Game::determineWinner()
 {
-	std::cout << "Победитель(и): name1 с 21 очками!" << std::endl;
+	int bestScore = 0;
+	std::vector<Player*> winners;
+	for (auto& player : players) {
+		int score = player.calculatePoints();
+		if (score > bestScore) {
+			bestScore = score;
+			winners.clear();
+			winners.push_back(&player);
+		}
+	}
+	std::cout << "Победитель(и): ";
+	for (auto* winner : winners) {
+		std::cout << winner->getName() << " ";
+	}
+	std::cout << "с " << bestScore << " очками!" << std::endl;
 }
 
 void Game::addPlayer(Player p)
