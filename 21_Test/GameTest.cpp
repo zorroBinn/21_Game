@@ -78,3 +78,17 @@ TEST(GameTest, setupGameValidInputAndCheckFourPlayersTest) {
     EXPECT_EQ(players[2].getName(), "name3");
     EXPECT_EQ(players[3].getName(), "name4");
 }
+
+TEST(GameTest, setupGameInitialCardsTest) {
+    istringstream input("2\nname1\nname2\n");
+    cin.rdbuf(input.rdbuf());
+
+    Game game;
+    game.setupGame();
+
+    const auto& players = game.getPlayers();
+    EXPECT_EQ(players[0].getHand().size(), 2);
+    EXPECT_EQ(players[1].getHand().size(), 2);
+
+    cin.rdbuf(nullptr);
+}
