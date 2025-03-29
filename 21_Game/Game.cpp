@@ -31,7 +31,6 @@ void Game::setupGame()
 void Game::play()
 {
 	//todo в конце определять победителя(-ей)
-	//запретить брать карты, если уже перебрал
 	for (auto& player : players) {
 		system("cls");
 		while (true) {
@@ -42,6 +41,10 @@ void Game::play()
 
 			if (choice == '+') {
 				player.takeCard(deck.dealCard());
+				if (player.calculatePoints() > 21) {
+					std::cout << player.getName() << " перебрал!" << std::endl;
+					break;
+				}
 			}
 			else if (choice == 'n') {
 				break;
