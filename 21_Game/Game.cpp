@@ -30,10 +30,24 @@ void Game::setupGame()
 
 void Game::play()
 {
-	//todo реализовать отображение текущих карт у активного игрока с подсчетом очков
-//возможность брать карту или пропускать ход
-//в конце определять победителя(-ей)
-	std::cout << "Карты игрока name1: A_Черви 8_Черви (19)" << std::endl;
+	//todo в конце определять победителя(-ей)
+	//запретить брать карты, если уже перебрал
+	for (auto& player : players) {
+		system("cls");
+		while (true) {
+			player.showHand();
+			std::cout << player.getName() << ", хотите взять карту? (\"+\"/\"n\"): ";
+			char choice;
+			std::cin >> choice;
+
+			if (choice == '+') {
+				player.takeCard(deck.dealCard());
+			}
+			else if (choice == 'n') {
+				break;
+			}
+		}
+	}
 }
 
 void Game::determineWinner()
