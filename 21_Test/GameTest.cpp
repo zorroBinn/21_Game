@@ -63,3 +63,18 @@ TEST(GameTest, gameSetupGameWithThreePlayerCheckPlayersTest) {
 
     cin.rdbuf(nullptr);
 }
+
+TEST(GameTest, setupGameValidInputAndCheckFourPlayersTest) {
+    istringstream input("1\n5\n4\nname1\nname2\nname3\nname4\n");
+    cin.rdbuf(input.rdbuf());
+
+    Game game;
+    game.setupGame();
+    
+    const auto& players = game.getPlayers();
+    ASSERT_EQ(players.size(), 4);
+    EXPECT_EQ(players[0].getName(), "name1");
+    EXPECT_EQ(players[1].getName(), "name2");
+    EXPECT_EQ(players[2].getName(), "name3");
+    EXPECT_EQ(players[3].getName(), "name4");
+}
